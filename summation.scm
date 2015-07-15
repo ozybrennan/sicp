@@ -20,3 +20,29 @@
       (sum term (next a) next b))))
 
 (define (cube x) (* x x x))
+
+(define (product term a next b)
+  (if (> a b)
+    1
+    (* (term a)
+      (product term (next a) next b))))
+
+(define (identity x) x)
+
+(define (factorial n)
+  (product identity 1 inc n))
+
+(define (approximate-pi n)
+  (* 4
+  (/ (product top-term 1 inc n)
+     (product bottom-term 1 inc n))))
+
+(define (top-term x)
+  (if (= (remainder x 2) 0)
+      (+ 2 x)
+      (+ 1 x)))
+
+(define (bottom-term x)
+  (if (= (remainder x 2) 0)
+    (+ 1 x)
+    (+ 2 x)))
